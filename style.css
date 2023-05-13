@@ -207,10 +207,41 @@ p {
     background-clip: text;
 }
 
+.text-grad > span {
+
+    background: linear-gradient(180deg, #D48E44 0%, #F2656C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-clip: text;
+}
+
 
 
 html, body {
     width: 100%;
     height: 100%;
     margin: 0;
+}
+
+@keyframes fluid {
+    33% {
+        transform: scale(calc(1 + var(--index)/var(--total)/2)) translateX(calc(var(--index) * 0.05em));
+        opacity: 0.8;
+    }       
+
+    100% {
+        transform: scale(1) translateX(0px) perspective(0px) skewX(0deg);
+    }
+}
+
+
+
+.fluid-text-anim > span {
+    display: inline-block;
+    animation-name: fluid;
+    opacity: 1;
+    animation-duration: calc(0.05s + var(--index)/var(--total)/3 * 1s);
+    animation-timing-function: ease-out;
+    animation-delay: calc(var(--index) * 0.05s);
 }
